@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Editor</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body onload="onLoadEditor()">
+    <header class="main-header">
+        <img class="logo" src="imgs/logo/logo.jpg" alt="">
+        <ul class="main-nav-list">
+            <li><a href="editmeme.html">Memes</a></li>
+            <li><a href="index.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </header>
+    <main class="editor-grid">
+        <a class="back-gallery" href="about.html">Back to Gallery</a>
+        <div class="canvas-container">
+            <canvas width="450" height="450" onclick="onDraw(event)"></canvas>
+        </div>
+
+
+
+        <form class="meme-settings" action="">
+            <div class="lines-switch-canvas ">Edit Text Lines
+                <button class="select-line">1/2</button>
+                <button class="change-lines">||</button>
+                <button class="add-line">+</button>
+                <button class="delete-line">.</button>
+            </div>
+
+            <ul class="font-settings-list">
+                <li><a href="#">Memes</a>
+                    <select id="font-selector">
+                        <option value="Arial">Arial</option>
+                        <option value="Times">Times</option>
+                        <option value="Courier">Courier</option>
+                      </select>             
+                </li>
+                <li class="lawer-case"><a href="#">a</a></li>
+                <li class="upper-case"><a href="#">A</a></li>
+                <li class="text-left"><a href="#">=</a></li>
+                <li class="text-center"><a href="#">=</a></li>
+                <li class="text-right"><a href="#">=</a></li>
+                <li class="text-art"><a href="#">Art</a></li>
+                <li class="text-draw"><a href="#">Pencil</a></li>
+                <input type="text" placeholder="impact" >
+            </ul>
     
+
+        </form>
+    </main>
+
+
+    <script src="js/services/utility.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/images.service.js"></script>
+    <script src="js/meme.controler.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

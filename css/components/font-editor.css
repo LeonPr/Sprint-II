@@ -1,0 +1,11 @@
+
+.font-settings-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.font-settings-list a{
+    list-style-type: none;
+    text-decoration: none;
+}

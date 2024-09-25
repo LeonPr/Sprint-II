@@ -29,3 +29,9 @@
 .main-nav-list a:hover{
     color:  #FF9826;
 }
+.back-gallery{
+    color: #989898;
+    margin-left: 20px;
+    font-family: 'Roboto';
+    text-decoration: none;
+}

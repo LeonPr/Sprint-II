@@ -3,7 +3,7 @@
 }
 
 html{
-    background-color:#F8F8F8;
+    background-color:var(-clr-background);
 }
 /* top bar
 
