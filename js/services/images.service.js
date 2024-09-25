@@ -1,6 +1,6 @@
 const IMG_KEY = 'ex-sprintII'
 
-gImgGallery=[]
+var gImgGallery=[]
 
 
 // var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
@@ -15,32 +15,34 @@ var gMeme = {
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getImgs(){
-  return gImgGallerys
+  return gImgGallery
 }
 
 function _loadImages() {
     gImgGallery = loadFromStorage(IMG_KEY)
 
     if (gImgGallery && gImgGallery.length !== 0) return
-  
-    gImgGallery.push(createImg("/img/square/1.gpg",['human','politician','US','Donald Trump']))
-    gImgGallery.push(createImg("/img/square/2.gpg",['animals','dog','Labrador']))
-    gImgGallery.push(createImg("/img/square/3.gpg",['animals','dog','human','baby']))
-    gImgGallery.push(createImg("/img/square/4.gpg",['animals','cat']))
-    gImgGallery.push(createImg("/img/square/5.gpg",['human','baby']))
-    gImgGallery.push(createImg("/img/square/6.gpg",['human','television presenter','Giorgio A. Tsoukalos']))
-    gImgGallery.push(createImg("/img/square/7.gpg",['human','baby']))
-    gImgGallery.push(createImg("/img/square/8.gpg",['human','movie','actor','Gene Wilder','Willy Wonka']))
-    gImgGallery.push(createImg("/img/square/9.gpg",['human','baby']))
-    gImgGallery.push(createImg("/img/square/10.gpg",['human','politician','US','Barack Obama']))
-    gImgGallery.push(createImg("/img/square/11.gpg",['human','SPORT','US','NBA','basketball','Ron Artest',' Paul Pierce ']))
-    gImgGallery.push(createImg("/img/square/12.gpg",['human','television presenter','Israel','NBA','Haim Hecht']))
-    gImgGallery.push(createImg("/img/square/13.gpg",['human','movie','actor','Leonardo DiCaprio','The Great Gatsby']))
-    gImgGallery.push(createImg("/img/square/14.gpg",['human','movie','actor','Laurence Fishburne','Morpheus']))
-    gImgGallery.push(createImg("/img/square/15.gpg",['human','movie','actor','Sean Bean','Boromir']))
-    gImgGallery.push(createImg("/img/square/16.gpg",['human','movie','actor','Patrick Stewart','Jean-Luc Picard','Star Trek']))
-    gImgGallery.push(createImg("/img/square/17.gpg",['human','politician','Russia','Vladimir Putin']))
-    gImgGallery.push(createImg("/img/square/17.gpg",['animated','Woody','Buzz Lightyear']))
+    console.log('string', createImg("/imgs/square/1.jpg",['human','politician','US','Donald Trump']));
+    gImgGallery=[]
+
+    gImgGallery.push(createImg("/imgs/square/1.jpg",['human','politician','US','Donald Trump']))
+    gImgGallery.push(createImg("/imgs/square/2.jpg",['animals','dog','Labrador']))
+    gImgGallery.push(createImg("/imgs/square/3.jpg",['animals','dog','human','baby']))
+    gImgGallery.push(createImg("/imgs/square/4.jpg",['animals','cat']))
+    gImgGallery.push(createImg("/imgs/square/5.jpg",['human','baby']))
+    gImgGallery.push(createImg("/imgs/square/6.jpg",['human','television presenter','Giorgio A. Tsoukalos']))
+    gImgGallery.push(createImg("/imgs/square/7.jpg",['human','baby']))
+    gImgGallery.push(createImg("/imgs/square/8.jpg",['human','movie','actor','Gene Wilder','Willy Wonka']))
+    gImgGallery.push(createImg("/imgs/square/9.jpg",['human','baby']))
+    gImgGallery.push(createImg("/imgs/square/10.jpg",['human','politician','US','Barack Obama']))
+    gImgGallery.push(createImg("/imgs/square/11.jpg",['human','SPORT','US','NBA','basketball','Ron Artest',' Paul Pierce ']))
+    gImgGallery.push(createImg("/imgs/square/12.jpg",['human','television presenter','Israel','Haim Hecht']))
+    gImgGallery.push(createImg("/imgs/square/13.jpg",['human','movie','actor','Leonardo DiCaprio','The Great Gatsby']))
+    gImgGallery.push(createImg("/imgs/square/14.jpg",['human','movie','actor','Laurence Fishburne','Morpheus']))
+    gImgGallery.push(createImg("/imgs/square/15.jpg",['human','movie','actor','Sean Bean','Boromir']))
+    gImgGallery.push(createImg("/imgs/square/16.jpg",['human','movie','actor','Patrick Stewart','Jean-Luc Picard','Star Trek']))
+    gImgGallery.push(createImg("/imgs/square/17.jpg",['human','politician','Russia','Vladimir Putin']))
+    gImgGallery.push(createImg("/imgs/square/18.jpg",['animated','Woody','Buzz Lightyear']))
 
     _saveImgGallery()
   }
