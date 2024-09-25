@@ -22,7 +22,7 @@ function appStart(){
 }
 
 function onImgClick(elImg){
-
+    console.log('elImg', elImg);
 }
 function onFilterInput(){
     const imgsList= getImgs()
