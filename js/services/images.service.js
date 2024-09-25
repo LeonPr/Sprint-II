@@ -4,6 +4,7 @@ gImgGallery=[]
 
 
 // var gImgs = [{ id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] }]
+_loadImages() 
 
 var gMeme = {
     selectedImgId: 5,
@@ -13,11 +14,14 @@ var gMeme = {
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+function getImgs(){
+  return gImgGallerys
+}
 
 function _loadImages() {
     gImgGallery = loadFromStorage(IMG_KEY)
 
-    if (gQuestsTree && gQuestsTree.length !== 0) return
+    if (gImgGallery && gImgGallery.length !== 0) return
   
     gImgGallery.push(createImg("/img/square/1.gpg",['human','politician','US','Donald Trump']))
     gImgGallery.push(createImg("/img/square/2.gpg",['animals','dog','Labrador']))
@@ -39,8 +43,6 @@ function _loadImages() {
     gImgGallery.push(createImg("/img/square/17.gpg",['animated','Woody','Buzz Lightyear']))
 
     _saveImgGallery()
-  
-  
   }
 
   function createImg(imgLink,keywords) {

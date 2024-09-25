@@ -1,5 +1,9 @@
 
-.search{
-    margin-top: 20px;
-    width: 100%;
+.search-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    height: 2.625em;
+    width: 80%;
 }
