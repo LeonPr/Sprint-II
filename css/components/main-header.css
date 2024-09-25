@@ -1,0 +1,18 @@
+.main-header {
+    display:grid;
+    grid-template-columns: 3fr 1fr;
+    height: 3.1875em;
+    font-family: 'Roboto';
+}
+.logo{
+    columns: 1;
+}
+.main-nav-list {
+    columns: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+} 
