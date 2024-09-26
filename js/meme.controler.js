@@ -74,7 +74,9 @@ function loadImsToCanvas(imgUrl) {
 
     img1.src = imgUrl
 }
-
+function onShare(){
+    
+}
 
 function renderMeme(textOmImg = 'hi') {
     drawText(textOmImg, gCtx.x, gCtx.x)
@@ -137,5 +139,4 @@ function drawText(text, x, y) {
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
     updateMeme(gImgId, gCurrLinesNo, gNewText, gFontSize, gFillColor)
-
 }

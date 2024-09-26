@@ -1,35 +1,57 @@
-
-body{
+body {
     background-color: #F8F8F8;
     font-family: 'Roboto';
 }
-.editor-grid{
+
+.editor-grid {
     display: grid;
-    grid-template-columns: minmax(auto,2fr) minmax(23em,auto);
-    grid-template-rows: 30px 1fr ;
+    /* grid-template-columns: minmax(450, auto) 370px; */
+    grid-template-columns: auto 530px;
+    grid-template-rows: 30px 1fr 0.8fr;
 }
-.back-gallery{
-    grid-column: 1 / 1 ;
+
+.back-gallery {
+    grid-column: 1 / 1;
 }
-.canvas-container{
-    grid-column: 1 / 2 ;
+
+.canvas-container {
+    grid-column: 1 / 2;
 }
-.meme-settings{
+
+.share {
+    grid-column: 2 / 2;
+    align-self:end;
+    justify-self: end;
+    width: 140px;
+    height: 54px;
+    left: 1270px;
+    top: 925px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    text-transform:uppercase;
+    color: #F8F8F8;
+    background: #FF9826;
+    border: 1px solid #FF9826;
+    border-radius: 35px;
+}
+
+.meme-settings {
     display: grid;
     grid-template-rows: 30px 30px;
 }
 
-.lines-switch-canvas{
+.lines-switch-canvas {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.lines-switch-canvas p{
+
+.lines-switch-canvas p {
     margin-right: 10em;
     font-size: 1.5em;
 }
 
-.edit-buttons{
+.edit-buttons {
     width: 2.5em;
     height: 1.875em;
     text-align: center;
@@ -37,6 +59,7 @@ body{
     background-color: var(--clr-background);
     border: 0px;
 }
-.edit-buttons:hover{
-    border-bottom: 1px solid  #FF9826;
+
+.edit-buttons:hover {
+    border-bottom: 1px solid #FF9826;
 }
