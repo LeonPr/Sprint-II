@@ -2,6 +2,7 @@
 var gElCanvas
 var gCtx
 var hasInput = false
+var gNewText=''
 const startX=200
 const startY=50
 function onLoadEditor() {
@@ -22,10 +23,10 @@ function renderCanvas() {
     gCtx.fillRect(0, 0, gElCanvas.width, gElCanvas.height)
     const currImg = getImgs(getCurrentImgId())
     loadImsToCanvas(currImg.url)
-    //setTimeout(drowAfterLoad,2000) 
+    
 }
-function drowAfterLoad(){
-    // drawText('HI-HHHHHH', 200, 50)
+function drawAfterLoad(){
+    drawText(gNewText, startX, startY)
 }
 
 function loadImsToCanvas(imgUrl) {
@@ -47,13 +48,14 @@ function renderMeme(textOmImg='hi'){
     drawText(textOmImg, gCtx.x, gCtx.x)
 }
 
-
 function onTextInput(elInput){
 
     const elFilter = document.querySelector('input')
     if (elFilter.value.length !== 0) {
         renderCanvas()
-        drawText(elFilter.value, startX, startY)
+        gNewText=elFilter.value
+        setTimeout(drawAfterLoad,200) 
+        
     } else {
         renderCanvas()
     }
