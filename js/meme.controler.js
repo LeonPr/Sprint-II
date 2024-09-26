@@ -3,8 +3,8 @@ var gElCanvas
 var gCtx
 var hasInput = false
 var gNewText=''
-const startX=200
-const startY=50
+const startX=220
+const startY=40
 function onLoadEditor() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext("2d")
@@ -50,7 +50,7 @@ function renderMeme(textOmImg='hi'){
 
 function onTextInput(elInput){
 
-    const elFilter = document.querySelector('input')
+    const elFilter = document.querySelector('.add-text')
     if (elFilter.value.length !== 0) {
         renderCanvas()
         gNewText=elFilter.value
