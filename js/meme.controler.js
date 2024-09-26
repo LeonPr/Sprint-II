@@ -49,7 +49,9 @@ function drawAfterLoad() {
     }else{
         const firstLineTxt=getMemeText(gImgId,1)
         drawText(firstLineTxt, startX, startY)
-        drawText(gNewText, startX, endY)       
+        const secondLineTxt=getMemeText(gImgId,2)
+        drawText(secondLineTxt, startX, endY)
+        drawText(gNewText, startX, middleY)       
     }
 }
 
