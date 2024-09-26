@@ -18,15 +18,15 @@
     <main class="editor-grid">
         <a class="back-gallery" href="index.html">Back to Gallery</a>
         <div class="canvas-container">
-            <canvas width="450" height="450" onclick="onDraw(event)"></canvas>
+            <canvas width="450" height="450" onclick="onCanvasClick(event)"></canvas>
         </div>
         <form class="meme-settings" action="">
-            <div class="lines-switch-canvas ">
+            <div class="lines-switch-canvas">
                 <p>Edit Text Lines</p> 
-                <button class="select-line">1/2</button>
-                <button class="change-lines"></button>
-                <button class="add-line">+</button>
-                <button class="delete-line">.</button>
+                <button class="select-line edit-buttons">1/2</button>
+                <button class="change-lines edit-buttons"><img src="imgs/buttons/up-down.jpg"/></button>
+                <button class="add-line edit-buttons"><img src="imgs/buttons/add-plus.jpg"/></button>
+                <button class="delete-line edit-buttons"><img src="imgs/buttons/trash.jpg"/></button>
             </div>
 
             <ul class="font-settings-list">
@@ -46,7 +46,7 @@
                 <li class="text-art"><a href="#">Art</a></li>
                 <li class="text-draw"><a href="#">Pencil</a></li>
             </ul>
-            <input class="search-img add-text" type="text" placeholder=" insert text" oninput="onFilterInput()" >
+            <input class="search-img add-text" type="text" placeholder=" insert text" oninput="onTextInput()" >
     
 
         </form>

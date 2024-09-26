@@ -1,3 +1,5 @@
+'use strict'
+
 const IMG_KEY = 'ex-sprintII'
 const CUR_IMG_ID = 'ID-sprintII'
 

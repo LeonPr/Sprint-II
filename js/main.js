@@ -1,6 +1,7 @@
 'use strict'
 var gElCanvas
 var gCtx
+var hasInput = false
 
 function onLoadEditor() {
     gElCanvas = document.querySelector('canvas')
@@ -13,7 +14,7 @@ function onLoadEditor() {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
     // Changing the canvas dimension clears the canvas
-    gElCanvas.width = elContainer.clientWidth - 40  //* Subtracting 20px padding from each side
+    gElCanvas.width = elContainer.clientWidth //- 40  //* Subtracting 20px padding from each side
 
     // drawArc(gElCanvas.width/2, gElCanvas.height/2)
 }
@@ -46,3 +47,60 @@ function loadImsToCanvas(imgUrl) {
     img1.src = imgUrl
 }
 
+function onTextInput(elInput){
+    // const imgsList = getImgs()
+    // const elFilter = document.querySelector('input')
+    const filteredImgs = imgsList.filter(imgs => (imgs.keywords.includes(elFilter.value)))
+
+    if (filteredImgs.length !== 0) {
+        renderImgs(filteredImgs)
+    } else {
+        renderImgs()
+    }
+
+}
+function onCanvasClick(ev){
+    if (hasInput) return;
+    addInput(ev.clientX, ev.clientY);
+}
+
+//Function to dynamically add an input box: 
+function addInput(x, y) {
+
+    var input = document.createElement('input');
+
+    input.type = 'text';
+    input.style.position = 'fixed';
+    input.style.left = (x - 4) + 'px';
+    input.style.top = (y - 4) + 'px';
+
+    input.onkeydown = handleEnter;
+
+    document.body.appendChild(input);
+
+    input.focus();
+
+    hasInput = true;
+}
+
+//Key handler for input box:
+function handleEnter(e) {
+    var keyCode = e.keyCode;
+    if (keyCode === 13) {
+        drawText(this.value, parseInt(this.style.left, 10), parseInt(this.style.top, 10));
+        document.body.removeChild(this);
+        hasInput = false;
+    }
+}
+
+
+function drawText(text, x, y) {
+    gCtx.lineWidth = 1
+    gCtx.strokeStyle = 'brown'
+    gCtx.fillStyle = 'black'
+    gCtx.font = '40px Arial'
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
+    gCtx.fillText(text, x, y)
+    gCtx.strokeText(text, x, y)
+}
