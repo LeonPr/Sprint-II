@@ -27,12 +27,12 @@
         <div class="canvas-container">
             <canvas width="450" height="450" onclick="onCanvasClick(event)"></canvas>
         </div>
-        <form class="meme-settings" action="">
+        <div class="meme-settings" >
             <div class="lines-switch-canvas">
                 <p>Edit Text Lines</p> 
-                <button class="select-line edit-buttons">1/2</button>
+                <button class="select-line edit-buttons">1</button>
                 <button class="change-lines edit-buttons"><img src="imgs/buttons/up-down.jpg"/></button>
-                <button class="add-line edit-buttons"><img src="imgs/buttons/add-plus.jpg"/></button>
+                <button class="add-line edit-buttons" onclick="onAddLine(event)"><img src="imgs/buttons/add-plus.jpg"/></button>
                 <button class="delete-line edit-buttons"><img src="imgs/buttons/trash.jpg"/></button>
             </div>
 
@@ -56,13 +56,14 @@
             <input class="search-img add-text" type="text" placeholder=" insert text" oninput="onTextInput()" >
     
 
-        </form>
+        </div>
     </main>
 
 
     <script src="js/services/utility.service.js"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/images.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
     <script src="js/gallery.controler.js"></script>
     <script src="js/meme.controler.js"></script>
 </body>

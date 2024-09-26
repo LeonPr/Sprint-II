@@ -22,14 +22,13 @@ function getImgs(imgId = '') {
   }
 }
 
+
 function setCurrentImgId(imgId) {
   saveToStorage(CUR_IMG_ID, imgId)
-  // gCurrentImgId = imgId
 }
 
 function getCurrentImgId() {
   return loadFromStorage(CUR_IMG_ID)
-  // return gCurrentImgId 
 }
 
 function _loadImages() {

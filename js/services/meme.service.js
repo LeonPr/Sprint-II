@@ -4,11 +4,7 @@ const MEME_KEY = 'ex-sprintII-meme'
 
 var gMemes = []
 
-// var gMeme = {
-//     selectedImgId: 5,
-//     selectedLineIdx: 0,
-//     lines: [{ txt: 'I sometimes eat Falafel', size: 20, color: 'red' }]
-// }
+_loadMemes()
 
 function getMeme(imgId = '') {
     if (imgId.length === 0) {
@@ -18,24 +14,40 @@ function getMeme(imgId = '') {
     }
 }
 
-function updateMeme(imgID, lineNo, line = []) {
-
+function updateMeme(imgID, lineNo, lineText, fontSize, fillColor) {
+    const meme = gMemes.find(meme => meme.selectedImgId === imgID)
+    if (!meme) {
+        gMemes.push(createMeme(imgID, lineNo, [{ txt: lineText, size: fontSize, color: fillColor }]))
+    } else {
+        if (meme.lines.length < lineNo) {
+            meme.lines.push({ txt: lineText, size: fontSize, color: fillColor })
+        }else{
+            meme.lines[lineNo-1].txt=lineText
+            meme.lines[lineNo-1].size=fontSize
+            meme.lines[lineNo-1].color=fillColor
+        }
+    }
+    _saveMemes()
 }
 
-
-function _loadImages() {
+function getMemeText(imgID,lineIndx){
+    const meme = gMemes.find(meme => meme.selectedImgId === imgID)
+    return meme.lines[lineIndx-1].txt
+  
+  }
+function _loadMemes() {
     gMemes = loadFromStorage(MEME_KEY)
 
     if (gMemes && gMemes.length !== 0) return
     gMemes = []
 
     gMemes.push(createMeme('y1Q0c', 1, [{ txt: 'I sometimes eat Falafel', size: 20, color: 'red' }]))
-    gMemes.push(createImg('cJG68', 1, [{ txt: 'Cheers', size: 20, color: 'blue' }]))
-    gMemes.push(createImg('40KQY', 1, [{ txt: 'Boom!', size: 20, color: 'red' }]))
-    gMemes.push(createImg('vE4yp', 1, [{ txt: 'Pow!', size: 20, color: 'blue' }]))
+    gMemes.push(createMeme('cJG68', 1, [{ txt: 'Cheers', size: 20, color: 'blue' }]))
+    gMemes.push(createMeme('40KQY', 1, [{ txt: 'Boom!', size: 20, color: 'red' }]))
+    gMemes.push(createMeme('vE4yp', 1, [{ txt: 'Pow!', size: 20, color: 'blue' }]))
 
 
-    _saveImgGallery()
+    _saveMemes()
 }
 
 function createMeme(imgID, lineNo, line = []) {
@@ -46,6 +58,6 @@ function createMeme(imgID, lineNo, line = []) {
     }
 }
 
-function _saveImgGallery() {
+function _saveMemes() {
     saveToStorage(MEME_KEY, gMemes)
 }
