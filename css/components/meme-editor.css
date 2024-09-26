@@ -7,7 +7,7 @@ body {
     display: grid;
     /* grid-template-columns: minmax(450, auto) 370px; */
     grid-template-columns: auto 530px;
-    grid-template-rows: 30px 1fr 0.8fr;
+    grid-template-rows: 30px 1fr 0.3fr;
 }
 
 .back-gallery {
