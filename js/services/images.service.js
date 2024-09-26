@@ -9,16 +9,12 @@ var gCurrentImgId = ''
 
 _loadImages()
 
-var gMeme = {
-  selectedImgId: 5,
-  selectedLineIdx: 0,
-  lines: [{ txt: 'I sometimes eat Falafel', size: 20, color: 'red' }]
-}
+
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
-function getImgs(imgId='') {
-  console.log('imgId', imgId);
+function getImgs(imgId = '') {
+
   if (imgId.length === 0) {
     return gImgGallery
   } else {
