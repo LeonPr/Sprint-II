@@ -9,4 +9,12 @@
     margin-left: 10px;
     margin-right: 10px;
     border: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+}
+
+.add-text{
+    border-radius: 0px;
+    width: auto;
+    margin-left: 0px;
+    margin-right: 0px;
 }

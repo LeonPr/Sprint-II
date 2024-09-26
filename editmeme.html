@@ -16,24 +16,23 @@
         </ul>
     </header>
     <main class="editor-grid">
-        <a class="back-gallery" href="about.html">Back to Gallery</a>
+        <a class="back-gallery" href="index.html">Back to Gallery</a>
         <div class="canvas-container">
             <canvas width="450" height="450" onclick="onDraw(event)"></canvas>
         </div>
-
-
-
         <form class="meme-settings" action="">
-            <div class="lines-switch-canvas ">Edit Text Lines
+            <div class="lines-switch-canvas ">
+                <p>Edit Text Lines</p> 
                 <button class="select-line">1/2</button>
-                <button class="change-lines">||</button>
+                <button class="change-lines"></button>
                 <button class="add-line">+</button>
                 <button class="delete-line">.</button>
             </div>
 
             <ul class="font-settings-list">
-                <li><a href="#">Memes</a>
-                    <select id="font-selector">
+                <li><a href="#"></a>
+                    <select id="font-selector" placeholder="impact">
+                        <option value="impact">impact</option>
                         <option value="Arial">Arial</option>
                         <option value="Times">Times</option>
                         <option value="Courier">Courier</option>
@@ -46,8 +45,8 @@
                 <li class="text-right"><a href="#">=</a></li>
                 <li class="text-art"><a href="#">Art</a></li>
                 <li class="text-draw"><a href="#">Pencil</a></li>
-                <input type="text" placeholder="impact" >
             </ul>
+            <input class="search-img add-text" type="text" placeholder=" insert text" oninput="onFilterInput()" >
     
 
         </form>

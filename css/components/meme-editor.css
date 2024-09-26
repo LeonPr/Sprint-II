@@ -1,6 +1,29 @@
+
+body{
+    background-color: #F8F8F8;
+    font-family: 'Roboto';
+}
+.editor-grid{
+    display: grid;
+    grid-template-columns: minmax(auto,2fr) 23em;
+    grid-template-rows: 30px 1fr ;
+}
+.back-gallery{
+    grid-column: 1 / 1 ;
+}
+.canvas-container{
+    grid-column: 1 / 2 ;
+}
 .meme-settings{
     display: grid;
     grid-template-rows: 30px 30px;
-
 }
 
+.lines-switch-canvas{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.lines-switch-canvas p{
+    margin-right: 10em;
+}

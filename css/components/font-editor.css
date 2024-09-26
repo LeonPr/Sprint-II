@@ -3,9 +3,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.font-settings-list a{
+    justify-content:space-between;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
     text-decoration: none;
 }
+

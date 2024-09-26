@@ -1,4 +1,5 @@
 const IMG_KEY = 'ex-sprintII'
+const CUR_IMG_ID = 'ID-sprintII'
 
 var gImgGallery = []
 var gCurrentImgId = ''
@@ -14,12 +15,23 @@ var gMeme = {
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
-function getImgs() {
-  return gImgGallery
+function getImgs(imgId='') {
+  console.log('imgId', imgId);
+  if (imgId.length === 0) {
+    return gImgGallery
+  } else {
+    return gImgGallery.find(img => img.id === imgId)
+  }
 }
 
 function setCurrentImgId(imgId) {
-  gCurrentImgId = imgId
+  saveToStorage(CUR_IMG_ID, imgId)
+  // gCurrentImgId = imgId
+}
+
+function getCurrentImgId() {
+  return loadFromStorage(CUR_IMG_ID)
+  // return gCurrentImgId 
 }
 
 function _loadImages() {

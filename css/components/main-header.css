@@ -3,7 +3,8 @@
     grid-template-columns: 3fr 1fr;
     height: 3.1875em;
     font-family: 'Roboto';
-
+    border-bottom: 1px solid #DBDBDB;
+    margin-bottom: 30px;
 }
 
 .logo{

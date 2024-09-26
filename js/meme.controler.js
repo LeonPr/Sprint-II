@@ -22,6 +22,7 @@ function appStart() {
 }
 
 function onImgClick(elImg) {
+    console.log('elImg.id', elImg.id);
     setCurrentImgId(elImg.id)
     window.location.href = "editMeme.html";
 }
