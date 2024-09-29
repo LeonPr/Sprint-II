@@ -10,7 +10,7 @@ function getMeme(imgId = '') {
     if (imgId.length === 0) {
         return gMemes
     } else {
-        return gMemes.find(img => img.id === imgId)
+        return gMemes.find(meme => meme.selectedImgId === imgId)
     }
 }
 
@@ -28,6 +28,10 @@ function updateMeme(imgID, lineNo, lineText, fontSize, fillColor) {
         }
     }
     _saveMemes()
+}
+function getMemeLines(imgID){
+    const meme = gMemes.find(meme => meme.selectedImgId === imgID)
+    return meme.lines
 }
 
 function getMemeText(imgID,lineIndx){

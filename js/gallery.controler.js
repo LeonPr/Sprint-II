@@ -22,13 +22,12 @@ function appStart() {
 }
 
 function onImgClick(elImg) {
-    console.log('elImg.id', elImg.id);
+    // console.log('elImg.id', elImg.id);
     setCurrentImgId(elImg.id)
     document.querySelector('.search-img').style.display = "none"
     document.querySelector('.img-container').style.display = "none"
     document.querySelector('.editor-grid').style.display = "grid"
     onLoadEditor()
-    // window.location.href = "editMeme.html";
 }
 
 function onFilterInput() {

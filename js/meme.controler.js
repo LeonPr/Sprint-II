@@ -14,8 +14,8 @@ var gHasInput = false
 
 const startX = 220
 const startY = 40
-const middleY = 190
-const endY = 420
+const middleY = 235
+const endY = 470
 
 
 function onLoadEditor() {
@@ -37,24 +37,31 @@ function renderCanvas() {
     gImgId = getCurrentImgId()
     const img = getImgs(getCurrentImgId())
     loadImsToCanvas(img.url)
-
+    setTimeout(renderMeme, 200)
 }
+
 function drawAfterLoad() {
-    if (gCurrLinesNo===1){
+    if (gCurrLinesNo === 1) {
         drawText(gNewText, startX, startY)
-    }else if((gCurrLinesNo===2)){
-        const firstLineTxt=getMemeText(gImgId,1)
+    } else if ((gCurrLinesNo === 2)) {
+        const firstLineTxt = getMemeText(gImgId, 1)
         drawText(firstLineTxt, startX, startY)
         drawText(gNewText, startX, endY)
-    }else{
-        const firstLineTxt=getMemeText(gImgId,1)
+    } else {
+        const firstLineTxt = getMemeText(gImgId, 1)
         drawText(firstLineTxt, startX, startY)
-        const secondLineTxt=getMemeText(gImgId,2)
+        const secondLineTxt = getMemeText(gImgId, 2)
         drawText(secondLineTxt, startX, endY)
-        drawText(gNewText, startX, middleY)       
+        drawText(gNewText, startX, middleY)
     }
+    updateSelectedLine()
 }
 
+function updateSelectedLine(){
+    const linesNo=document.querySelector('.select-line')
+    if (gCurrLinesNo===1) linesNo.innerText=gCurrLinesNo
+    else linesNo.innerText=gImgLinesNo +'/' +gCurrLinesNo
+}
 function onAddLine(ev) {
     updateMeme(gImgId, gCurrLinesNo, gNewText, gFontSize, gFillColor)
     gNewText = ''
@@ -62,24 +69,32 @@ function onAddLine(ev) {
     gCurrLinesNo = gImgLinesNo
     document.querySelector('.add-text').value = ''
 }
+
 function loadImsToCanvas(imgUrl) {
-
     var img1 = new Image()
-
     img1.onload = function () {
         gCtx.drawImage(img1, 0, 0)
         gCtx.fillStyle = "rgba(200, 0, 0, 0.0)"
         gCtx.fillRect(0, 0, 500, 500)
     }
-
     img1.src = imgUrl
 }
-function onShare(){
-    
+function onShare() {
+
 }
 
 function renderMeme(textOmImg = 'hi') {
-    drawText(textOmImg, gCtx.x, gCtx.x)
+    gCurrLinesNo = 0
+    const memeR = getMeme(gImgId)
+     if (memeR && memeR.length!== 0) {
+        const lines = getMemeLines(gImgId)
+        lines.forEach(line => {
+            gCurrLinesNo += 1
+            gNewText=line.txt
+            drawAfterLoad()
+        })
+
+    }
 }
 
 function onTextInput(elInput) {
@@ -105,17 +120,13 @@ function onCanvasClick(ev) {
 
 function addInput(x, y) {
     var input = document.createElement('input');
-
     input.type = 'text';
     input.style.position = 'fixed';
     input.style.left = (x) + 'px';
     input.style.top = (y) + 'px';
     input.onkeydown = handleEnter;
-
     document.body.appendChild(input);
-
     input.focus();
-
     gHasInput = true;
 }
 
