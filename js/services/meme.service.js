@@ -21,24 +21,31 @@ function updateMeme(imgID, lineNo, lineText, fontSize, fillColor) {
     } else {
         if (meme.lines.length < lineNo) {
             meme.lines.push({ txt: lineText, size: fontSize, color: fillColor })
-        }else{
-            meme.lines[lineNo-1].txt=lineText
-            meme.lines[lineNo-1].size=fontSize
-            meme.lines[lineNo-1].color=fillColor
+        } else {
+            meme.lines[lineNo - 1].txt = lineText
+            meme.lines[lineNo - 1].size = fontSize
+            meme.lines[lineNo - 1].color = fillColor
         }
     }
     _saveMemes()
 }
-function getMemeLines(imgID){
+function getMemeLines(imgID) {
     const meme = gMemes.find(meme => meme.selectedImgId === imgID)
     return meme.lines
 }
 
-function getMemeText(imgID,lineIndx){
+function deleteLine(imgID, lineIndx){
     const meme = gMemes.find(meme => meme.selectedImgId === imgID)
-    return meme.lines[lineIndx-1].txt
-  
-  }
+    meme.lines.splice([lineIndx-1],1)
+    _saveMemes()
+}
+
+function getMemeText(imgID, lineIndx) {
+    const meme = gMemes.find(meme => meme.selectedImgId === imgID)
+    return meme.lines[lineIndx - 1].txt
+}
+
+
 function _loadMemes() {
     gMemes = loadFromStorage(MEME_KEY)
 

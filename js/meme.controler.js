@@ -23,7 +23,7 @@ function onLoadEditor() {
     gCtx = gElCanvas.getContext("2d")
     resizeCanvas()
     renderCanvas()
-
+    setTimeout(renderMeme, 200)
 }
 
 function resizeCanvas() {
@@ -37,7 +37,7 @@ function renderCanvas() {
     gImgId = getCurrentImgId()
     const img = getImgs(getCurrentImgId())
     loadImsToCanvas(img.url)
-    setTimeout(renderMeme, 200)
+
 }
 
 function drawAfterLoad() {
@@ -54,13 +54,29 @@ function drawAfterLoad() {
         drawText(secondLineTxt, startX, endY)
         drawText(gNewText, startX, middleY)
     }
+     updateSelectedLine()
+}
+
+function updateSelectedLine() {
+    const linesNo = document.querySelector('.select-line')
+    if (gCurrLinesNo === 1) linesNo.innerText = gCurrLinesNo
+    else linesNo.innerText = gImgLinesNo + '/' + gCurrLinesNo
+}
+
+function changeLine() {
+    if (gCurrLinesNo > gImgLinesNo) {
+        gImgLinesNo += 1
+    } else {
+        gImgLinesNo = 1
+    }
     updateSelectedLine()
 }
 
-function updateSelectedLine(){
-    const linesNo=document.querySelector('.select-line')
-    if (gCurrLinesNo===1) linesNo.innerText=gCurrLinesNo
-    else linesNo.innerText=gImgLinesNo +'/' +gCurrLinesNo
+function onDeleteLine(){
+    deleteLine(gImgId,gImgLinesNo)
+    renderCanvas()
+    gNewText=''
+    setTimeout(drawAfterLoad, 200)
 }
 function onAddLine(ev) {
     updateMeme(gImgId, gCurrLinesNo, gNewText, gFontSize, gFillColor)
@@ -86,11 +102,11 @@ function onShare() {
 function renderMeme(textOmImg = 'hi') {
     gCurrLinesNo = 0
     const memeR = getMeme(gImgId)
-     if (memeR && memeR.length!== 0) {
+    if (memeR && memeR.length !== 0) {
         const lines = getMemeLines(gImgId)
         lines.forEach(line => {
             gCurrLinesNo += 1
-            gNewText=line.txt
+            gNewText = line.txt
             drawAfterLoad()
         })
 
@@ -103,6 +119,7 @@ function onTextInput(elInput) {
     if (elFilter.value.length !== 0) {
         renderCanvas()
         gNewText = elFilter.value
+        if (gCurrLinesNo === 0) gCurrLinesNo = 1
         setTimeout(drawAfterLoad, 200)
 
     } else {
@@ -113,31 +130,31 @@ function onTextInput(elInput) {
 function onCanvasClick(ev) {
     console.log('x', ev.clientX);
     console.log('y', ev.clientY);
-    if (gHasInput) return;
-    addInput(ev.clientX, ev.clientY);
+    // if (gHasInput) return;
+    // addInput(ev.clientX, ev.clientY);
 }
 
 
-function addInput(x, y) {
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.style.position = 'fixed';
-    input.style.left = (x) + 'px';
-    input.style.top = (y) + 'px';
-    input.onkeydown = handleEnter;
-    document.body.appendChild(input);
-    input.focus();
-    gHasInput = true;
-}
+// function addInput(x, y) {
+//     var input = document.createElement('input');
+//     input.type = 'text';
+//     input.style.position = 'fixed';
+//     input.style.left = (x) + 'px';
+//     input.style.top = (y) + 'px';
+//     input.onkeydown = handleEnter;
+//     document.body.appendChild(input);
+//     input.focus();
+//     gHasInput = true;
+// }
 
-function handleEnter(e) {
-    var keyCode = e.keyCode;
-    if (keyCode === 13) {
-        drawText(this.value, parseInt(this.style.left, 0), parseInt(this.style.top, 0));
-        document.body.removeChild(this);
-        gHasInput = false;
-    }
-}
+// function handleEnter(e) {
+//     var keyCode = e.keyCode;
+//     if (keyCode === 13) {
+//         drawText(this.value, parseInt(this.style.left, 0), parseInt(this.style.top, 0));
+//         document.body.removeChild(this);
+//         gHasInput = false;
+//     }
+// }
 
 function drawText(text, x, y) {
     gCtx.lineWidth = 1
