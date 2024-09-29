@@ -61,6 +61,8 @@ function updateSelectedLine() {
     const linesNo = document.querySelector('.select-line')
     if (gCurrLinesNo === 1) linesNo.innerText = gCurrLinesNo
     else linesNo.innerText = gImgLinesNo + '/' + gCurrLinesNo
+    const lineTxt = getMemeText(gImgId, gImgLinesNo)
+    document.querySelector('.add-text').value = lineTxt
 }
 
 function changeLine() {
